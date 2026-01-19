@@ -196,6 +196,18 @@ tests = ["check-manifest", "coverage (>=7.4.2)", "defusedxml", "markdown2", "ole
 xmp = ["defusedxml"]
 
 [[package]]
+name = "pytils"
+version = "0.4.4"
+description = "Russian-specific string utils"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "pytils-0.4.4-py3-none-any.whl", hash = "sha256:e54c16465a5fdb65d414e2da8045e6cc6de79889acda6143dcef2e1e86a1a840"},
+    {file = "pytils-0.4.4.tar.gz", hash = "sha256:9992a96caad57daa211584df1da4fd825f11e836d3ed93011785f1d02ab6f0ca"},
+]
+
+[[package]]
 name = "ruff"
 version = "0.14.11"
 description = "An extremely fast Python linter and code formatter, written in Rust."
@@ -256,4 +268,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "f4e80f19b9140ba9be17d6ffa112ea1352cbe2ee13153e3c7ef3df41f33f1464"
+content-hash = "4ae955b3057d4d4b566ad32fcf4de88a36f5fa5011d9f20f3069bffbd4f830ee"
