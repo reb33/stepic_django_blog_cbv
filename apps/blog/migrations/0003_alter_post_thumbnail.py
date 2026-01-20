@@ -5,15 +5,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0002_alter_post_slug_alter_post_thumbnail'),
+        ("blog", "0002_alter_post_slug_alter_post_thumbnail"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='thumbnail',
-            field=models.ImageField(blank=True, default='default.png', upload_to='images/thumbnails/%Y/%m/%d/', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))], verbose_name='Изображение записи'),
+            model_name="post",
+            name="thumbnail",
+            field=models.ImageField(
+                blank=True,
+                default="default.png",
+                upload_to="images/thumbnails/%Y/%m/%d/",
+                validators=[
+                    django.core.validators.FileExtensionValidator(
+                        allowed_extensions=("png", "jpg", "webp", "jpeg", "gif")
+                    )
+                ],
+                verbose_name="Изображение записи",
+            ),
         ),
     ]
