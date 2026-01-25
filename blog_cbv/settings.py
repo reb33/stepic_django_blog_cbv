@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "mptt",
     "django_mptt_admin",
     "debug_toolbar",  # приложение тулбара
+    "apps.accounts",
 ]
 
 MIDDLEWARE = [
