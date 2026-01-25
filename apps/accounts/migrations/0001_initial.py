@@ -7,7 +7,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,19 +15,61 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(blank=True, max_length=255, unique=True, verbose_name='URL')),
-                ('avatar', models.ImageField(blank=True, default='images/avatars/default.png', upload_to='images/avatars/%Y/%m/%d/', validators=[django.core.validators.FileExtensionValidator(allowed_extensions=('png', 'jpg', 'jpeg'))], verbose_name='Аватар')),
-                ('bio', models.TextField(blank=True, max_length=500, verbose_name='Информация о себе')),
-                ('birth_date', models.DateField(blank=True, null=True, verbose_name='Дата рождения')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True, max_length=255, unique=True, verbose_name="URL"
+                    ),
+                ),
+                (
+                    "avatar",
+                    models.ImageField(
+                        blank=True,
+                        default="images/avatars/default.png",
+                        upload_to="images/avatars/%Y/%m/%d/",
+                        validators=[
+                            django.core.validators.FileExtensionValidator(
+                                allowed_extensions=("png", "jpg", "jpeg")
+                            )
+                        ],
+                        verbose_name="Аватар",
+                    ),
+                ),
+                (
+                    "bio",
+                    models.TextField(
+                        blank=True, max_length=500, verbose_name="Информация о себе"
+                    ),
+                ),
+                (
+                    "birth_date",
+                    models.DateField(
+                        blank=True, null=True, verbose_name="Дата рождения"
+                    ),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Профиль',
-                'verbose_name_plural': 'Профили',
-                'ordering': ('user',),
+                "verbose_name": "Профиль",
+                "verbose_name_plural": "Профили",
+                "ordering": ("user",),
             },
         ),
     ]
