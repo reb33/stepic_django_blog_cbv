@@ -25,6 +25,7 @@ from blog_cbv import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.blog.urls")),
+    path("", include("apps.accounts.urls")),
 ]
 
 if settings.DEBUG:
