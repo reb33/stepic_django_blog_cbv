@@ -1,6 +1,6 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
-from .forms import PostCreateForm
+from .forms import PostCreateForm, PostUpdateForm
 from .models import Post, Category
 
 
@@ -68,4 +68,24 @@ class PostCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class PostUpdateView(UpdateView):
+    """
+    Представление: обновления материала на сайте
+    """
+
+    model = Post
+    template_name = "blog/post_update.html"
+    context_object_name = "post"
+    form_class = PostUpdateForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = f"Обновление статьи {self.object.title}"
+        return context
+
+    def form_valid(self, form):
+        # form.instance.updater = self.request.user
         return super().form_valid(form)
