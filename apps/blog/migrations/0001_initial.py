@@ -33,9 +33,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "slug",
-                    models.SlugField(
-                        blank=True, max_length=255, verbose_name="URL категории"
-                    ),
+                    models.SlugField(blank=True, max_length=255, verbose_name="URL категории"),
                 ),
                 (
                     "description",
@@ -81,9 +79,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "slug",
-                    models.SlugField(
-                        blank=True, max_length=255, unique=True, verbose_name="URL"
-                    ),
+                    models.SlugField(blank=True, max_length=255, unique=True, verbose_name="URL"),
                 ),
                 (
                     "description",
@@ -115,15 +111,11 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "create",
-                    models.DateTimeField(
-                        auto_now_add=True, verbose_name="Время добавления"
-                    ),
+                    models.DateTimeField(auto_now_add=True, verbose_name="Время добавления"),
                 ),
                 (
                     "update",
-                    models.DateTimeField(
-                        auto_now=True, verbose_name="Время обновления"
-                    ),
+                    models.DateTimeField(auto_now=True, verbose_name="Время обновления"),
                 ),
                 (
                     "fixed",

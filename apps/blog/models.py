@@ -16,12 +16,7 @@ class PostManager(models.Manager):
         """
         Список постов (SQL запрос с фильтрацией по статусу опубликованно)
         """
-        return (
-            super()
-            .get_queryset()
-            .select_related("author", "category")
-            .filter(status="published")
-        )
+        return super().get_queryset().select_related("author", "category").filter(status="published")
 
 
 class Post(models.Model):
@@ -46,11 +41,7 @@ class Post(models.Model):
         verbose_name="Изображение записи",
         blank=True,
         upload_to="images/thumbnails/%Y/%m/%d/",
-        validators=[
-            FileExtensionValidator(
-                allowed_extensions=("png", "jpg", "webp", "jpeg", "gif")
-            )
-        ],
+        validators=[FileExtensionValidator(allowed_extensions=("png", "jpg", "webp", "jpeg", "gif"))],
     )
     status = models.CharField(
         choices=STATUS_OPTIONS,

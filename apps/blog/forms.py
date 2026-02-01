@@ -18,9 +18,7 @@ class PostCreateForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields[field].widget.attrs.update(
-                {"class": "form-control", "autocomplete": "off"}
-            )
+            self.fields[field].widget.attrs.update({"class": "form-control", "autocomplete": "off"})
 
 
 class PostUpdateForm(PostCreateForm):

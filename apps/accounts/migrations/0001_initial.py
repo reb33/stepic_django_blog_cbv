@@ -28,9 +28,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "slug",
-                    models.SlugField(
-                        blank=True, max_length=255, unique=True, verbose_name="URL"
-                    ),
+                    models.SlugField(blank=True, max_length=255, unique=True, verbose_name="URL"),
                 ),
                 (
                     "avatar",
@@ -39,24 +37,18 @@ class Migration(migrations.Migration):
                         default="images/avatars/default.png",
                         upload_to="images/avatars/%Y/%m/%d/",
                         validators=[
-                            django.core.validators.FileExtensionValidator(
-                                allowed_extensions=("png", "jpg", "jpeg")
-                            )
+                            django.core.validators.FileExtensionValidator(allowed_extensions=("png", "jpg", "jpeg"))
                         ],
                         verbose_name="Аватар",
                     ),
                 ),
                 (
                     "bio",
-                    models.TextField(
-                        blank=True, max_length=500, verbose_name="Информация о себе"
-                    ),
+                    models.TextField(blank=True, max_length=500, verbose_name="Информация о себе"),
                 ),
                 (
                     "birth_date",
-                    models.DateField(
-                        blank=True, null=True, verbose_name="Дата рождения"
-                    ),
+                    models.DateField(blank=True, null=True, verbose_name="Дата рождения"),
                 ),
                 (
                     "user",
