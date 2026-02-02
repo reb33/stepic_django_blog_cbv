@@ -3,6 +3,7 @@ from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import User
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
+from taggit.managers import TaggableManager
 
 from apps.services.utils import unique_slugify
 
@@ -70,6 +71,8 @@ class Post(models.Model):
 
     objects = models.Manager()
     custom = PostManager()
+
+    tags = TaggableManager()
 
     class Meta:
         db_table = "blog_post"

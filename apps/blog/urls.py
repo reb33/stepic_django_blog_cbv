@@ -6,6 +6,7 @@ from .views import (
     PostCreateView,
     PostUpdateView,
     CommentCreateView,
+    PostByTagListView,
 )
 
 urlpatterns = [
@@ -14,5 +15,6 @@ urlpatterns = [
     path("post/<slug:slug>/update/", PostUpdateView.as_view(), name="post_update"),
     path("post/<slug:slug>/", PostDetailView.as_view(), name="post_detail"),
     path("post/<int:pk>/comments/create/", CommentCreateView.as_view(), name="comment_create_view"),
+    path("post/tags/<str:tag>/", PostByTagListView.as_view(), name="post_by_tags"),  # New
     path("category/<slug:slug>/", PostFromCategory.as_view(), name="post_by_category"),
 ]
