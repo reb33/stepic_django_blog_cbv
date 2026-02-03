@@ -12,8 +12,15 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False),
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(BASE_DIR / ".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -45,6 +52,7 @@ INSTALLED_APPS = [
     "debug_toolbar",  # приложение тулбара
     "apps.accounts",
     "taggit",
+    "django_recaptcha",
 ]
 
 MIDDLEWARE = [
@@ -128,3 +136,6 @@ STATICFILES_DIRS = [BASE_DIR / "templates/js/"]
 
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
+
+RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
