@@ -221,3 +221,5 @@ gunicorn_config.py
 gunicorn.sh
 
 mysite_data.json
+
+static
