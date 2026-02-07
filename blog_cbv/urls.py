@@ -20,13 +20,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from apps.blog.feeds import LatestPostFeed
 from blog_cbv import settings
 
 urlpatterns = [
+    path("ckeditor/", include("ckeditor_uploader.urls")),
     path("admin/", admin.site.urls),
+    path("feeds/latest/", LatestPostFeed(), name="latest_post_feed"),
     path("", include("apps.blog.urls")),
     path("", include("apps.accounts.urls")),
-    path("ckeditor/", include("ckeditor_uploader.urls")),
 ]
 
 if settings.DEBUG:
