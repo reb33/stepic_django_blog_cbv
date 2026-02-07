@@ -4,11 +4,12 @@ from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.utils.formats import date_format
 from django.utils.timezone import localtime
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from taggit.models import Tag
 
 from .forms import PostCreateForm, PostUpdateForm, CommentCreateForm
-from .models import Post, Category
+from .models import Post, Category, Rating
 from ..services.mixins import AuthorRequiredMixin
 
 
@@ -162,3 +163,29 @@ class PostByTagListView(ListView):
         context = super().get_context_data(**kwargs)
         context["title"] = f"Статьи по тегу: {self.tag.name}"
         return context
+
+
+class RatingCreateView(View):
+    model = Rating
+
+    def post(self, request, *args, **kwargs):
+        post_id = request.POST.get("post_id")
+        value = int(request.POST.get("value"))
+        x_forvarded_for = request.META.get("HTTP_X_FORVARDED_FOR")
+        ip = x_forvarded_for.split(",")[0] if x_forvarded_for else request.META.get("REMOTE_ADDR")
+        user = request.user if request.user.is_authenticated else None
+
+        rating, created = self.model.objects.get_or_create(
+            post_id=post_id,
+            ip_address=ip,
+            defaults={"value": value, "user": user},
+        )
+
+        if not created:
+            if rating.value == value:
+                rating.delete()
+            else:
+                rating.value = value
+                rating.user = user
+                rating.save()
+        return JsonResponse({"rating_sum": rating.post.get_sum_rating()})
