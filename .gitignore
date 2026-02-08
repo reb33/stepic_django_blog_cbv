@@ -223,3 +223,4 @@ gunicorn.sh
 mysite_data.json
 
 static
+cache
