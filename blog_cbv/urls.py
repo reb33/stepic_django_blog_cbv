@@ -23,6 +23,11 @@ from django.urls import path, include
 from apps.blog.feeds import LatestPostFeed
 from blog_cbv import settings
 
+
+handler403 = "apps.blog.views.tr_handler403"
+handler404 = "apps.blog.views.tr_handler404"
+handler500 = "apps.blog.views.tr_handler500"
+
 urlpatterns = [
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("admin/", admin.site.urls),
